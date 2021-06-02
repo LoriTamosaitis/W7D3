@@ -27,16 +27,26 @@ RSpec.describe User, type: :model do
     describe "associations" do
         it { should have_many(:goals) }
     end
+
+
     
-    # describe "::find_by_credentials" do
-    #     subject(:valid_user) { User.create(
+    describe "::find_by_credentials" do
+        let! (:user ) {create (:user)}
+        context "with valid username"  do 
+            it "should validate password" do 
+            end 
+        end 
+
+    end
+
+
+    #         subject(:valid_user) { User.create(
     #     username: "Toby",
     #     password_digest: "password" ,
     #     session_token: SecureRandom::urlsafe_base64
     # ) }
     #     it "should return valid user"
     #         expect(User.find_by_credentials(valid_user.username, valid_user.password).to be (valid_user))
-    # end
 
 
 end
