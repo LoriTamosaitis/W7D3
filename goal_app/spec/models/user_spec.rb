@@ -16,25 +16,27 @@ RSpec.describe User, type: :model do
 
         it { should validate_uniqueness_of (:session_token)}
 
-        # subject(:toby) { User.create (
-        #     username: "Toby",
-        #     password_digest: "12345",
-        #     session_token: "8907"
-        # ) }
 
         subject(:toby) { User.create(
         username: "Toby",
-        # email: "toby@gmail.com",
-        # age: 5,
-        # political_affiliation: "Hufflepuff",
         password_digest: "password" ,
-        session_token: "8907"
+        session_token: SecureRandom::urlsafe_base64
     ) }
+    end
 
-    end 
-
-
-
+    describe "associations" do
+        it { should have_many(:goals) }
+    end
+    
+    # describe "::find_by_credentials" do
+    #     subject(:valid_user) { User.create(
+    #     username: "Toby",
+    #     password_digest: "password" ,
+    #     session_token: SecureRandom::urlsafe_base64
+    # ) }
+    #     it "should return valid user"
+    #         expect(User.find_by_credentials(valid_user.username, valid_user.password).to be (valid_user))
+    # end
 
 
 end
